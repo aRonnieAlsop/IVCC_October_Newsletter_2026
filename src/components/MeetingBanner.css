@@ -1,0 +1,203 @@
+.meeting-banner {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  color: #292b29;
+  background: #33374b;
+}
+
+/*
+ * Show only the upper 72% of the image.
+ * The lower green foreground stays outside the visible frame.
+ */
+.meeting-banner-art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.meeting-banner-art img {
+  display: block;
+  width: 100%;
+  height: 139%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.meeting-banner-inner {
+  width: min(100%, 1440px);
+  margin-inline: auto;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.meeting-banner-box {
+  width: min(100%, 720px);
+  padding: clamp(24px, 3vw, 40px);
+  background: #ffffff;
+}
+
+.meeting-banner-label {
+  margin: 0 0 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.meeting-banner-box h2 {
+  max-width: 18ch;
+  margin: 0 0 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.meeting-banner-date {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.meeting-banner-date > span {
+  white-space: nowrap;
+}
+
+.meeting-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  color: #6025c7;
+  background: #f5efff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.meeting-location-pin {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.meeting-location > span:nth-child(2) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.meeting-location:hover {
+  color: #ffffff;
+  background: #6025c7;
+}
+
+.meeting-location:focus-visible {
+  outline: 3px solid #6025c7;
+  outline-offset: 4px;
+}
+
+.meeting-thanks {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #deded8;
+}
+
+.meeting-thanks h3 {
+  margin: 0 0 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.meeting-thanks p {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .meeting-banner-inner {
+    padding: 24px 20px;
+  }
+
+  .meeting-banner-box {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .meeting-banner-art img {
+    object-position: 75% top;
+  }
+
+  .meeting-banner-box h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .meeting-banner-date {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meeting-location {
+    transition: none;
+  }
+}
+
+.meeting-banner {
+  scroll-margin-top: 24px;
+}
+
+.meeting-thanks-link {
+  color: #6025c7;
+  background: #f5efff;
+  padding: 2px 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.meeting-thanks-link:hover {
+  color: #ffffff;
+  background: #6025c7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.meeting-thanks-link:focus-visible {
+  outline: 3px solid #6025c7;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meeting-thanks-link {
+    transition: none;
+  }
+}

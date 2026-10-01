@@ -1,184 +1,280 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+.newsletter {
   width: 100%;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+/* Pale top strip with contrasting editorial type styles. */
+
+.article-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--nav-background);
+}
+
+.article-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 78px;
+  padding: 16px 12px;
+  border-right: 1px solid #ffffff;
+  color: var(--ink);
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.15;
+  transition: background-color 160ms ease;
+}
+
+.article-nav-link:last-child {
+  border-right: 0;
+}
+
+.article-nav-link:hover {
+  background: #ffe0ae;
+}
+
+.article-nav-link:focus-visible {
+  outline-offset: -5px;
+}
+
+.article-nav-news {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  letter-spacing: -0.06em;
+}
+
+.article-nav-events {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.article-nav-artisan {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.article-nav-scholarship {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+/* Centered title with Membership at the right. */
+
+.publication-masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  width: min(100%, 1440px);
+  margin-inline: auto;
+  padding: 30px clamp(20px, 4vw, 64px);
+}
+
+.publication-title {
+  grid-column: 2;
+  text-align: center;
+}
+
+.publication-title h1 {
+  margin-bottom: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.publication-title p {
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.membership-link {
+  grid-column: 3;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding-block: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.membership-link svg {
+  flex-shrink: 0;
+}
+
+a.membership-link:hover {
+  text-decoration: underline;
+}
+
+.membership-pending {
+  cursor: default;
+}
+
+/* Temporary sections; the carousel will be styled next. */
+
+.newsletter-content,
+.newsletter-footer {
+  width: min(100%, 1320px);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 48px);
+}
+
+.newsletter-content > section {
+  padding-block: 32px;
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 24px;
+}
+
+.newsletter-content > section h2 {
+  margin-bottom: 16px;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+}
+
+.newsletter-content > section p {
+  max-width: 65ch;
+}
+
+.newsletter-footer {
+  padding-block: 32px;
+}
+
+/* Stack Membership beneath the title when space gets tight. */
+
+@media (max-width: 900px) {
+  .publication-masthead {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 14px;
+    padding-block: 24px;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .publication-title,
+  .membership-link {
+    grid-column: 1;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .membership-link {
+    justify-self: center;
+  }
+}
+
+/* Two-by-two navigation remains readable on phones. */
+
+@media (max-width: 600px) {
+  .article-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .article-nav-link {
+    min-height: 68px;
+    padding: 14px 10px;
+  }
+
+  .article-nav-link:nth-child(2) {
+    border-right: 0;
+  }
+
+  .article-nav-link:nth-child(-n + 2) {
+    border-bottom: 1px solid #ffffff;
+  }
+
+  .publication-title h1 {
+    font-size: 2rem;
+  }
+
+  .publication-title p {
+    max-width: 30ch;
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-nav-link {
+    transition: none;
+  }
+}
+
+.floating-chamber-logo {
+  position: fixed;
+  left: max(12px, env(safe-area-inset-left));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: clamp(44px, 7vw, 96px);
+  height: auto;
+  max-height: 96px;
+  object-fit: contain;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Leave room to scroll the final content above the logo. */
+.newsletter {
+  padding-bottom: 112px;
+}
+
+@media (max-width: 600px) {
+  .newsletter {
+    padding-bottom: 68px;
+  }
+}
+
+.article-nav-meeting {
+  flex-direction: column;
+  gap: 5px;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.article-nav-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.publication-header {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: #ffffff;
+  border-bottom: 1px solid #0a0a0a;
+}
+
+/* Leave room for the sticky header when jumping to sections. */
+.newsletter-content > section,
+#chamber-meeting {
+  scroll-margin-top: 240px;
+}
+
+@media (max-width: 900px) {
+  .newsletter-content > section,
+  #chamber-meeting {
+    scroll-margin-top: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .newsletter-content > section,
+  #chamber-meeting {
+    scroll-margin-top: 340px;
   }
 }
