@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import firstMarket from '../assets/first_market.png'
 import openHouse from '../assets/open_house.png'
 import taylorsvilleFestival from '../assets/tville_fall_festival.png'
@@ -44,7 +45,6 @@ const events = [
     dateTime: '2026-10-03',
     time: '10 AM–3 PM',
     location: 'Historic Taylorsville Hall',
-    // Use the venue name until its street address is confirmed.
     address: null,
     mapQuery: 'Historic Taylorsville Hall, Taylorsville, CA',
   },
@@ -135,65 +135,150 @@ function LocationLink({ event }) {
 }
 
 export default function EventsGrid() {
+  const [selectedEvent, setSelectedEvent] = useState(null)
+  const dialogRef = useRef(null)
+
+  useEffect(() => {
+    if (!selectedEvent) return
+
+    const previousBodyOverflow = document.body.style.overflow
+    const previousRootOverflow = document.documentElement.style.overflow
+
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow
+      document.documentElement.style.overflow = previousRootOverflow
+    }
+  }, [selectedEvent])
+
+  function openPoster(event) {
+    setSelectedEvent(event)
+
+    if (!dialogRef.current.open) {
+      dialogRef.current.showModal()
+    }
+  }
+
+  function closePoster() {
+    dialogRef.current?.close()
+  }
+
   return (
-    <section
-      className="events-section"
-      id="events"
-      aria-labelledby="events-heading"
-    >
-      <header className="events-section-header">
-        <p className="events-eyebrow">Around Indian Valley</p>
-        <h2 id="events-heading">
-          October’s first weekend is filling up.
-        </h2>
-      </header>
+    <>
+      <section
+        className="events-section"
+        id="events"
+        aria-labelledby="events-heading"
+      >
+        <header className="events-section-header">
+          <p className="events-eyebrow">Around Indian Valley</p>
+          <h2 id="events-heading">
+            October’s first weekend is filling up.
+          </h2>
+        </header>
 
-      <div className="events-grid">
-        {events.map((event) => (
-          <article
-            className="event-card"
-            id={event.id}
-            key={event.id}
-            aria-labelledby={`${event.id}-title`}
-          >
-            <div className="event-poster">
-              <img
-                src={event.image}
-                alt={`${event.title} event poster`}
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="event-card-body">
-              <h3
-                className="event-title"
-                id={`${event.id}-title`}
-              >
-                {event.title}
-              </h3>
-
-              <p className="event-description">
-                {event.description}
-              </p>
-
-              <div className="event-details">
-                <time
-                  className="event-date"
-                  dateTime={event.dateTime}
+        <div className="events-grid">
+          {events.map((event) => (
+            <article
+              className="event-card"
+              id={event.id}
+              key={event.id}
+              aria-labelledby={`${event.id}-title`}
+            >
+              <div className="event-poster">
+                <button
+                  className="event-poster-button"
+                  type="button"
+                  onClick={() => openPoster(event)}
+                  aria-label={`Enlarge ${event.title} poster`}
+                  aria-haspopup="dialog"
                 >
-                  <span className="event-day">{event.day}</span>
-                  <span>{event.date}</span>
-                </time>
-
-                <p className="event-time">{event.time}</p>
-
-                <LocationLink event={event} />
+                  <img
+                    src={event.image}
+                    alt={`${event.title} event poster`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
               </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
+
+              <div className="event-card-body">
+                <h3
+                  className="event-title"
+                  id={`${event.id}-title`}
+                >
+                  {event.title}
+                </h3>
+
+                <p className="event-description">
+                  {event.description}
+                </p>
+
+                <div className="event-details">
+                  <time
+                    className="event-date"
+                    dateTime={event.dateTime}
+                  >
+                    <span className="event-day">{event.day}</span>
+                    <span>{event.date}</span>
+                  </time>
+
+                  <p className="event-time">{event.time}</p>
+
+                  <LocationLink event={event} />
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <dialog
+        ref={dialogRef}
+        className="event-poster-dialog"
+        aria-label={
+          selectedEvent
+            ? `${selectedEvent.title} enlarged poster`
+            : 'Enlarged event poster'
+        }
+        onClose={() => setSelectedEvent(null)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            closePoster()
+          }
+        }}
+      >
+        <button
+          className="event-poster-close"
+          type="button"
+          onClick={closePoster}
+          aria-label="Close enlarged poster"
+          autoFocus
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="26"
+            height="26"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
+        {selectedEvent && (
+          <img
+            className="event-poster-enlarged"
+            src={selectedEvent.image}
+            alt={`${selectedEvent.title} event poster`}
+          />
+        )}
+      </dialog>
+    </>
   )
 }
