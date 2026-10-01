@@ -74,7 +74,6 @@ const events = [
     time: '6 PM',
     location: 'Crescent Store',
     address: '15792 Highway 89, Crescent Mills, CA',
-    thankYou: true,
   },
   {
     id: 'community-halloween-day',
@@ -144,7 +143,9 @@ export default function EventsGrid() {
     >
       <header className="events-section-header">
         <p className="events-eyebrow">Around Indian Valley</p>
-        <h2 id="events-heading">Make a little room for the first weekend in October.</h2>
+        <h2 id="events-heading">
+          October’s first weekend is filling up.
+        </h2>
       </header>
 
       <div className="events-grid">
@@ -189,22 +190,6 @@ export default function EventsGrid() {
 
                 <LocationLink event={event} />
               </div>
-
-              {event.thankYou && (
-                <p className="event-thank-you">
-                  Thank you to{' '}
-                  <a
-                    href="https://www.mthuffgolf.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Mt. Huff Golf Course
-                  </a>{' '}
-                  for hosting our mixer on Wednesday, September 9,
-                  and treating everyone to delicious chicken strips
-                  on the house!
-                </p>
-              )}
             </div>
           </article>
         ))}
