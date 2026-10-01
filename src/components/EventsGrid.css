@@ -1,0 +1,399 @@
+.events-section {
+  --events-ink: #0a0a0a;
+  --events-muted: #50504b;
+  --events-highlight: var(--nav-background, #ffedd2);
+  --events-purple: #6025c7;
+
+  width: min(100%, 1160px);
+  margin-inline: auto;
+  padding: clamp(28px, 4vw, 52px) clamp(20px, 4vw, 40px);
+  color: var(--events-ink);
+  font-family: 'DM Sans', Arial, sans-serif;
+  scroll-margin-top: 240px;
+}
+
+.events-section,
+.events-section *,
+.events-section *::before,
+.events-section *::after {
+  box-sizing: border-box;
+}
+
+.events-section-header {
+  max-width: 760px;
+  margin-bottom: clamp(26px, 3vw, 38px);
+}
+
+.events-eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.events-section-header h2 {
+  margin: 0;
+  font-size: clamp(1.875rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+
+/* Three columns on larger screens. */
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(22px, 3vw, 36px);
+  row-gap: clamp(40px, 5vw, 64px);
+  align-items: start;
+}
+
+.event-card {
+  width: 100%;
+  max-width: 320px;
+  min-width: 0;
+  justify-self: center;
+  scroll-margin-top: 240px;
+}
+
+.event-poster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1102 / 1427;
+}
+
+.event-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Information stays narrower than the poster. */
+
+.event-card-body {
+  width: 90%;
+  margin-inline: auto;
+  padding-top: 18px;
+}
+
+.event-title {
+  margin: 0 0 10px;
+  font-size: clamp(1.375rem, 1.8vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  overflow-wrap: break-word;
+}
+
+.event-description {
+  margin: 0 0 18px;
+  color: var(--events-muted);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+/* Each individual detail has its own highlight. */
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 0;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  max-width: 100%;
+}
+
+.event-date > span,
+.event-time {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 3px 8px;
+  background: var(--events-highlight);
+  color: var(--events-ink);
+}
+
+.event-day {
+  font-weight: 700;
+}
+
+.event-time {
+  font-weight: 600;
+}
+
+/* Location links: no underline, contrasting hover. */
+
+.event-location {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.event-location-link,
+.event-location-link:visited {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 7px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 9px 8px;
+  background: var(--events-highlight);
+  color: var(--events-ink);
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.event-location-link span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.event-location-pin {
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.event-location-link:hover,
+.event-location-link:focus-visible {
+  background: var(--events-ink);
+  color: #fff;
+  text-decoration: none;
+}
+
+.event-location-link:focus-visible,
+.event-thank-you a:focus-visible {
+  outline: 2px solid var(--events-purple);
+  outline-offset: 4px;
+}
+
+/* Address tooltip appears on hover or keyboard focus. */
+
+.event-address-tooltip {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  z-index: 5;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  padding: 10px 12px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    visibility 160ms ease;
+}
+
+.event-address-tooltip::after {
+  position: absolute;
+  top: 100%;
+  left: 15px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: #0a0a0a;
+  content: '';
+}
+
+.event-location:focus-within .event-address-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (hover: hover) {
+  .event-location:hover .event-address-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.event-location-note {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 7px;
+  padding: 3px 8px;
+  background: var(--events-highlight);
+  color: var(--events-muted);
+  font-size: 0.9375rem;
+}
+
+/* Meeting thank-you. */
+
+.event-thank-you {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #dedbd5;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.event-thank-you a {
+  padding: 1px 3px;
+  background: #f0e7ff;
+  color: var(--events-purple);
+  font-weight: 700;
+  text-decoration: none;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.event-thank-you a:hover {
+  background: var(--events-purple);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Wider two-column cards, with a capped poster height. */
+
+@media (min-width: 601px) and (max-width: 999px) {
+  .events-section {
+    width: 100%;
+    max-width: 960px;
+    padding-inline: 24px;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 44px;
+  }
+
+  .event-card {
+    max-width: 420px;
+  }
+
+  .event-poster {
+    aspect-ratio: auto;
+    height: clamp(300px, 42vw, 390px);
+  }
+
+  .event-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .event-card-body {
+    width: 88%;
+  }
+
+  .event-title {
+    font-size: 1.625rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .events-section,
+  .event-card {
+    scroll-margin-top: 280px;
+  }
+}
+
+/* Phones: posters use almost the full screen width. */
+
+@media (max-width: 600px) {
+  .events-section {
+    width: 100%;
+    padding: 28px 12px 40px;
+  }
+
+  .events-section,
+  .event-card {
+    scroll-margin-top: 340px;
+  }
+
+  .events-section-header {
+    margin-bottom: 28px;
+    padding-inline: 8px;
+  }
+
+  .events-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 44px;
+  }
+
+  .event-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .event-poster {
+    display: block;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  .event-poster img {
+    width: 100%;
+    height: auto;
+  }
+
+  .event-card-body {
+    width: 90%;
+    padding-top: 20px;
+  }
+
+  .event-title {
+    font-size: clamp(1.5rem, 6vw, 1.875rem);
+  }
+
+  .event-description {
+    font-size: 1.125rem;
+  }
+
+  .event-details {
+    font-size: 1.0625rem;
+  }
+
+  .event-thank-you {
+    font-size: 1.125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-location-link,
+  .event-address-tooltip,
+  .event-thank-you a {
+    transition: none;
+  }
+}

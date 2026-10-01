@@ -2,11 +2,13 @@ import Navbar from './Navbar'
 import MeetingBanner from './MeetingBanner'
 import Section from './Section'
 import logo from '../assets/logo.png'
+import EventsGrid from './EventsGrid'
 
 export default function Newsletter() {
   return (
     <div className="newsletter">
       <Navbar />
+      <EventsGrid />
 
       <MeetingBanner />
 
