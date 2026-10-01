@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Shrikhand&display=swap');
+
+.history-feature {
+  --history-ink: #0a0a0a;
+  --history-muted: #50504b;
+  --history-green: #238c79;
+  --history-peach: #b95e50;
+  --history-highlight: var(--nav-background, #ffedd2);
+
+  box-sizing: border-box;
+  width: min(100%, 1320px);
+  margin-inline: auto;
+  padding: clamp(36px, 6vw, 80px) clamp(20px, 4vw, 48px);
+  color: var(--history-ink);
+  font-family: 'DM Sans', Arial, sans-serif;
+  scroll-margin-top: 240px;
+}
+
+.history-feature *,
+.history-feature *::before,
+.history-feature *::after {
+  box-sizing: border-box;
+}
+
+.history-feature figure,
+.history-feature blockquote {
+  margin: 0;
+}
+
+.history-feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.history-feature cite {
+  font-style: italic;
+}
+
+/* Opening title mirrors the events heading. */
+
+.history-feature-header {
+  max-width: 900px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.history-eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.history-feature-header h2 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.history-introduction {
+  max-width: 55ch;
+  margin: 0;
+  color: var(--history-muted);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.6;
+}
+
+/* Large opening photograph, shown without cropping. */
+
+.history-hero {
+  width: 100%;
+}
+
+.history-hero img {
+  width: 100%;
+  height: auto;
+}
+
+.history-hero figcaption {
+  max-width: 65ch;
+  margin-top: 12px;
+  color: var(--history-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Alternating editorial picture-and-text layouts. */
+
+.history-story-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 76px);
+  margin-top: clamp(44px, 7vw, 92px);
+}
+
+.history-story-copy {
+  min-width: 0;
+  max-width: 52ch;
+}
+
+.history-story-copy h3,
+.history-frontier-copy h3 {
+  margin: 0 0 20px;
+  font-size: clamp(1.75rem, 3vw, 2.625rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.history-story-copy > p:not(.history-eyebrow),
+.history-frontier-copy > p:not(.history-eyebrow) {
+  margin: 0 0 18px;
+  color: var(--history-muted);
+  font-size: 1.1875rem;
+  line-height: 1.7;
+}
+
+.history-story-copy > p:last-child,
+.history-frontier-copy > p:last-child {
+  margin-bottom: 0;
+}
+
+.history-performance-photo {
+  width: 100%;
+  padding-top: 40px;
+}
+
+.history-story-row-reverse {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.history-smoke-photo {
+  width: 100%;
+}
+
+/* Big quotes: one solid color each, no background blocks. */
+
+.history-quote p {
+  margin: 0;
+}
+
+.history-quote footer {
+  margin-top: 22px;
+  color: var(--history-ink);
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.history-quote footer span {
+  display: block;
+  margin-top: 3px;
+  color: var(--history-muted);
+  font-size: 0.9375rem;
+}
+
+/* Chunky green quote with generous breathing room. */
+
+.history-feature .history-quote-grounds {
+  max-width: 1050px;
+  margin: clamp(56px, 8vw, 112px) auto;
+  text-align: center;
+}
+
+.history-quote-grounds p {
+  color: var(--history-green);
+  font-family: 'Shrikhand', Georgia, serif;
+  font-size: clamp(2.5rem, 6.5vw, 6rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* Peach lettering is deepened slightly for readability. */
+
+.history-quote-mat p {
+  color: var(--history-peach);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+/* Watch button echoes the navbar. */
+
+.history-watch-link,
+.history-watch-link:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  margin-top: 8px;
+  padding: 12px 22px;
+  background: var(--history-highlight);
+  color: var(--history-ink);
+  font-family: 'Oswald', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.history-watch-link svg {
+  flex-shrink: 0;
+}
+
+.history-watch-link:hover {
+  background: var(--history-ink);
+  color: #f7f4ee;
+  text-decoration: none;
+}
+
+.history-watch-link:focus-visible {
+  outline: 3px solid var(--history-green);
+  outline-offset: 5px;
+}
+
+/* Crowd photograph paired with Mat’s quote. */
+
+.history-community-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 76px);
+  margin-top: clamp(56px, 8vw, 104px);
+}
+
+.history-crowd-photo {
+  width: 100%;
+}
+
+/* Frontier Day stays more compact and understated. */
+
+.history-frontier {
+  margin-top: clamp(56px, 8vw, 104px);
+  padding-top: clamp(32px, 5vw, 56px);
+  border-top: 1px solid #dedbd5;
+}
+
+.history-frontier-copy {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.history-frontier-gallery {
+  max-width: 940px;
+  margin: 32px auto 0;
+}
+
+.history-gallery-label {
+  margin: 0 0 14px;
+  color: var(--history-muted);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.history-frontier-photos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.history-frontier-photos img {
+  width: 100%;
+  height: auto;
+}
+
+/* Tablet: stack the main story for comfortable reading. */
+
+@media (max-width: 900px) {
+  .history-feature {
+    scroll-margin-top: 280px;
+  }
+
+  .history-story-row,
+  .history-story-row-reverse,
+  .history-community-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .history-story-copy {
+    width: 100%;
+    max-width: 65ch;
+    margin-inline: auto;
+  }
+
+  .history-performance-photo {
+    width: 90%;
+    margin-left: auto;
+    padding-top: 0;
+  }
+
+  .history-smoke-photo {
+    width: 90%;
+  }
+
+  .history-feature .history-quote-mat {
+    max-width: 700px;
+    margin-inline: auto;
+  }
+
+  .history-crowd-photo {
+    width: 95%;
+    margin-left: auto;
+  }
+
+  .history-frontier-photos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Phones: large photos, readable copy, two-column photo gallery. */
+
+@media (max-width: 600px) {
+  .history-feature {
+    padding: 36px 16px 48px;
+    scroll-margin-top: 340px;
+  }
+
+  .history-feature-header {
+    margin-bottom: 26px;
+  }
+
+  .history-feature-header h2 {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .history-eyebrow {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+  }
+
+  .history-story-row,
+  .history-community-row {
+    margin-top: 40px;
+    gap: 24px;
+  }
+
+  .history-story-copy h3,
+  .history-frontier-copy h3 {
+    font-size: 1.875rem;
+  }
+
+  .history-story-copy > p:not(.history-eyebrow),
+  .history-frontier-copy > p:not(.history-eyebrow) {
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+
+  .history-performance-photo,
+  .history-smoke-photo,
+  .history-crowd-photo {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .history-feature .history-quote-grounds {
+    margin-block: 48px;
+  }
+
+  .history-quote-grounds p {
+    font-size: clamp(2.25rem, 10vw, 3.5rem);
+  }
+
+  .history-quote-mat p {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .history-quote footer {
+    margin-top: 18px;
+    font-size: 0.9375rem;
+  }
+
+  .history-frontier {
+    margin-top: 48px;
+    padding-top: 32px;
+  }
+
+  .history-frontier-gallery {
+    margin-top: 26px;
+  }
+
+  .history-frontier-photos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .history-watch-link {
+    min-height: 54px;
+    font-size: 1.125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .history-watch-link {
+    transition: none;
+  }
+}
