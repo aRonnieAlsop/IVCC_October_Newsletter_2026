@@ -278,3 +278,26 @@ a.membership-link:hover {
     scroll-margin-top: 340px;
   }
 }
+
+/* Standalone thank-you note beneath the events. */
+
+.mt-huff-thank-you {
+  box-sizing: border-box;
+  width: min(100%, 1160px);
+  margin-inline: auto;
+  padding: 0 clamp(20px, 4vw, 40px) clamp(36px, 5vw, 64px);
+}
+
+.mt-huff-thank-you img {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+  .mt-huff-thank-you {
+    padding: 0 12px 36px;
+  }
+}

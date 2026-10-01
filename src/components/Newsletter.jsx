@@ -1,33 +1,42 @@
 import Navbar from './Navbar'
-import MeetingBanner from './MeetingBanner'
+import EventsGrid from './EventsGrid'
 import Section from './Section'
 import logo from '../assets/logo.png'
-import EventsGrid from './EventsGrid'
+import mtHuffThankYou from '../assets/mt_huff_thank_you.png'
 
 export default function Newsletter() {
   return (
     <div className="newsletter">
       <Navbar />
-      <EventsGrid />
 
-      <MeetingBanner />
+      <main>
+        <EventsGrid />
 
-      <main className="newsletter-content">
-        <Section id="events" title="Upcoming Events">
-          <p>Our events carousel will go here.</p>
-        </Section>
+        <section
+          className="mt-huff-thank-you"
+          aria-label="Thank you to Mt. Huff Golf Course"
+        >
+          <img
+            src={mtHuffThankYou}
+            alt="Thank you, Mt. Huff Golf Course! For hosting our Chamber mixer on Wednesday, September 9, 2026, and treating everyone to delicious chicken strips on the house. We appreciate your generosity and hospitality! Indian Valley Chamber of Commerce."
+            loading="lazy"
+            decoding="async"
+          />
+        </section>
 
-        <Section id="chamber-news" title="Chamber News">
-          <p>Chamber updates will go here.</p>
-        </Section>
+        <div className="newsletter-content">
+          <Section id="chamber-news" title="Chamber News">
+            <p>Chamber updates will go here.</p>
+          </Section>
 
-        <Section id="artisan-shop" title="Artisan Shop">
-          <p>Artisan Shop information will go here.</p>
-        </Section>
+          <Section id="artisan-shop" title="Artisan Shop">
+            <p>Artisan Shop information will go here.</p>
+          </Section>
 
-        <Section id="scholarship" title="Scholarship">
-          <p>Scholarship information will go here.</p>
-        </Section>
+          <Section id="scholarship" title="Scholarship">
+            <p>Scholarship information will go here.</p>
+          </Section>
+        </div>
       </main>
 
       <footer className="newsletter-footer">
