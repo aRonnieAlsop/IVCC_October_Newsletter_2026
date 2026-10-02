@@ -418,3 +418,13 @@
     transition: none;
   }
 }
+
+.history-performance-photo figcaption,
+.history-smoke-photo figcaption,
+.history-crowd-photo figcaption {
+  max-width: 65ch;
+  margin-top: 12px;
+  color: var(--history-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}

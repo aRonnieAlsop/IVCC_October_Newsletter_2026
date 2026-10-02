@@ -85,6 +85,10 @@ export default function HistoryFeature() {
             loading="lazy"
             decoding="async"
           />
+
+          <figcaption>
+            The story unfolded around the hotel.
+          </figcaption>
         </figure>
       </div>
 
@@ -104,6 +108,10 @@ export default function HistoryFeature() {
             loading="lazy"
             decoding="async"
           />
+
+          <figcaption>
+            A little stage smoke, a lot of drama.
+          </figcaption>
         </figure>
 
         <div className="history-story-copy">
@@ -165,6 +173,10 @@ export default function HistoryFeature() {
             loading="lazy"
             decoding="async"
           />
+
+          <figcaption>
+            A small town. A full house.
+          </figcaption>
         </figure>
       </div>
 
