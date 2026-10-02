@@ -1,0 +1,47 @@
+.yoga-section {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: clamp(40px, 6vw, 80px);
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 4vw, 48px);
+  background: #eee5f8;
+}
+
+.yoga-flyer-link {
+  display: block;
+  width: min(100%, 640px);
+  margin-inline: auto;
+  text-decoration: none;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.yoga-flyer {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.yoga-flyer-link:focus-visible {
+  outline: 3px solid #6025c7;
+  outline-offset: 8px;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .yoga-flyer-link:hover {
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow: 10px 14px 0 rgb(96 37 199 / 12%);
+  }
+}
+
+@media (max-width: 600px) {
+  .yoga-section {
+    padding: 28px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yoga-flyer-link {
+    transition: none;
+  }
+}

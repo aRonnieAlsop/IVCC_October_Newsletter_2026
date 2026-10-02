@@ -1,20 +1,24 @@
 import Navbar from './Navbar'
 import EventsGrid from './EventsGrid'
 import HistoryFeature from './HistoryFeature'
-import Section from './Section'
-import logo from '../assets/logo.png'
 import ArtisanShop from './ArtisanShop'
+import YogaSection from './YogaSection'
+import NewsletterFooter from './NewsletterFooter'
+import logo from '../assets/logo.png'
 import mtHuffThankYou from '../assets/mt_huff_thank_you.png'
 
 export default function Newsletter() {
   return (
     <div className="newsletter">
+      <div id="page-top" className="newsletter-top-anchor" />
+
       <Navbar />
 
       <main>
         <EventsGrid />
 
         <HistoryFeature />
+
         <ArtisanShop />
 
         <section
@@ -29,13 +33,10 @@ export default function Newsletter() {
           />
         </section>
 
-       
+        <YogaSection />
       </main>
 
-      <footer className="newsletter-footer">
-        <p>Indian Valley Chamber of Commerce</p>
-        <a href="#newsletter-top">Back to top ↑</a>
-      </footer>
+      <NewsletterFooter />
 
       <img
         className="floating-chamber-logo"

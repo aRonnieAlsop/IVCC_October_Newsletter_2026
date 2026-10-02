@@ -1,0 +1,254 @@
+.newsletter-share,
+.newsletter-share *,
+.chamber-footer,
+.chamber-footer * {
+  box-sizing: border-box;
+}
+
+/* Share strip. */
+
+.newsletter-share {
+  width: 100%;
+  background: #f7f4ee;
+  color: #0a0a0a;
+  font-family: 'DM Sans', Arial, sans-serif;
+}
+
+.newsletter-share-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+  width: min(100%, 1160px);
+  margin-inline: auto;
+  padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 40px);
+}
+
+.newsletter-share-preview {
+  min-width: 0;
+}
+
+.newsletter-share-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.newsletter-share-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  aspect-ratio: 1.91 / 1;
+  padding: clamp(20px, 3vw, 32px);
+  background: #eee5f8;
+}
+
+.newsletter-share-placeholder > span {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.newsletter-share-placeholder strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.newsletter-share-copy {
+  min-width: 0;
+}
+
+.newsletter-share-copy h2 {
+  margin: 0 0 24px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.newsletter-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.newsletter-share-actions button,
+.newsletter-share-actions a,
+.newsletter-share-actions a:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 11px 18px;
+  border: 1px solid #0a0a0a;
+  border-radius: 0;
+  background: transparent;
+  color: #0a0a0a;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.newsletter-share-actions button:first-child {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.newsletter-share-actions button:hover,
+.newsletter-share-actions a:hover {
+  background: #0a0a0a;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.newsletter-share-actions button:first-child:hover {
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+.newsletter-share-status {
+  min-height: 1.5em;
+  margin: 12px 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.newsletter-share-manual {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #0a0a0a;
+  border-radius: 0;
+  background: #ffffff;
+  color: #0a0a0a;
+  font: inherit;
+  font-size: 1rem;
+}
+
+/* Dark editorial footer. */
+
+.chamber-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: clamp(40px, 6vw, 72px) 20px 24px;
+  background: #292929;
+  color: #ffffff;
+  font-family: 'DM Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+.chamber-back-top,
+.chamber-back-top:visited {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+}
+
+.chamber-back-top:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+.chamber-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.chamber-socials a,
+.chamber-socials a:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid transparent;
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.chamber-socials a:hover {
+  border-color: #ffffff;
+  background: rgb(255 255 255 / 8%);
+  color: #ffffff;
+}
+
+.chamber-socials svg {
+  display: block;
+}
+
+/* Keep copyright small, including on phones. */
+
+.chamber-footer .chamber-copyright {
+  max-width: 100%;
+  margin: 48px 0 0;
+  color: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.newsletter-share-actions button:focus-visible,
+.newsletter-share-actions a:focus-visible,
+.newsletter-share-manual:focus-visible {
+  outline: 2px solid #0a0a0a;
+  outline-offset: 4px;
+}
+
+.chamber-footer a:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .newsletter-share-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .newsletter-share-preview {
+    width: min(100%, 480px);
+    margin-inline: auto;
+  }
+
+  .newsletter-share-copy {
+    text-align: center;
+  }
+
+  .newsletter-share-actions {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newsletter-share-actions button,
+  .newsletter-share-actions a,
+  .chamber-socials a {
+    transition: none;
+  }
+}
