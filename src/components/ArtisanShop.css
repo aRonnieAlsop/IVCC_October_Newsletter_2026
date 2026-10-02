@@ -86,9 +86,14 @@
   line-height: 1.65;
 }
 
+/* Smaller poster, centered within its existing column. */
+
 .artisan-mercantile-image {
+  width: 100%;
+  max-width: 420px;
   min-width: 0;
-  margin: 0;
+  margin: 0 auto;
+  justify-self: center;
 }
 
 .artisan-mercantile-image img {
@@ -128,12 +133,6 @@
   font-family: 'Oswald', Arial, sans-serif;
 }
 
-.artisan-email-button {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.5rem;
-  font-style: italic;
-}
-
 .artisan-signup-button:hover,
 .artisan-email-button:hover {
   background: #ffffff;
@@ -167,42 +166,50 @@
   line-height: 1.6;
 }
 
-/* Mercantile spotlight. */
+/* Mercantile introduction and standalone quote. */
 
-.artisan-venue {
+.artisan-shop .artisan-venue {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(28px, 5vw, 64px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
   margin-top: clamp(48px, 7vw, 88px);
   padding-top: clamp(30px, 4vw, 48px);
   border-top: 1px solid var(--artisan-ink);
 }
 
-.artisan-venue-quote {
-  min-width: 0;
-  margin: 0;
+.artisan-venue-intro {
+  max-width: 650px;
 }
 
-.artisan-venue-quote blockquote {
+.artisan-shop .artisan-venue-quote {
+  width: 100%;
+  min-width: 0;
   margin: 0;
-  color: var(--artisan-ink);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 48px);
+  background: #ffffff;
+  text-align: center;
+}
+
+.artisan-shop .artisan-venue-quote blockquote {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #f12524;
+  font-family: 'Shrikhand', Georgia, serif;
+  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.22;
   letter-spacing: -0.025em;
 }
 
 .artisan-venue-quote blockquote p {
-  margin: 0 0 18px;
+  margin: 0;
 }
 
-.artisan-venue-quote blockquote p:last-child {
-  margin-bottom: 0;
-}
-
-.artisan-venue-quote figcaption {
-  margin-top: 22px;
+.artisan-shop .artisan-venue-quote figcaption {
+  margin-top: 28px;
+  color: #0a0a0a;
+  font-family: 'DM Sans', Arial, sans-serif;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5;
@@ -213,7 +220,74 @@
   font-weight: 400;
 }
 
-/* Black-and-white video cards on the pink background. */
+/* Location link and address tooltip. */
+
+.artisan-shop .artisan-location {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.artisan-shop .artisan-location-link,
+.artisan-shop .artisan-location-link:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  color: #0a0a0a;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.artisan-shop .artisan-location-link:hover,
+.artisan-shop .artisan-location-link:focus-visible {
+  background: #0a0a0a;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.artisan-shop .artisan-location-tooltip {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  z-index: 5;
+  display: block;
+  width: max-content;
+  max-width: min(300px, 100%);
+  padding: 10px 12px;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.45;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.artisan-shop .artisan-location:focus-within
+  .artisan-location-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (hover: hover) {
+  .artisan-shop .artisan-location:hover
+    .artisan-location-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Existing video-card styles, retained for compatibility. */
 
 .artisan-highlights {
   margin-top: clamp(48px, 7vw, 88px);
@@ -318,286 +392,7 @@
   color: var(--artisan-ink);
 }
 
-/* Just the questions button. */
-
-.artisan-contact {
-  margin-top: 32px;
-  padding-bottom: 4px;
-}
-
-.artisan-signup-button:focus-visible,
-.artisan-reel:focus-visible,
-.artisan-email-button:focus-visible {
-  outline: 3px solid var(--artisan-ink);
-  outline-offset: 5px;
-}
-
-.artisan-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Tablets and smaller laptops. */
-
-@media (max-width: 1000px) {
-  .artisan-reels-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .artisan-reel {
-    min-height: 210px;
-  }
-}
-
-@media (max-width: 900px) {
-  .artisan-shop {
-    scroll-margin-top: 280px;
-  }
-
-  .artisan-overview,
-  .artisan-venue {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .artisan-mercantile-image {
-    width: min(100%, 640px);
-    margin-inline: auto;
-  }
-
-  .artisan-overview-copy {
-    max-width: 680px;
-  }
-
-  .artisan-venue-quote {
-    max-width: 760px;
-  }
-}
-
-/* Phones. */
-
-@media (max-width: 600px) {
-  .artisan-shop {
-    scroll-margin-top: 340px;
-  }
-
-  .artisan-shop-inner {
-    padding: 36px 20px 48px;
-  }
-
-  .artisan-shop-header h2 {
-    font-size: clamp(2.25rem, 9vw, 3.25rem);
-  }
-
-  .artisan-overview {
-    gap: 30px;
-  }
-
-  .artisan-venue,
-  .artisan-highlights {
-    margin-top: 44px;
-    padding-top: 28px;
-  }
-
-  .artisan-venue-quote blockquote {
-    font-size: 1.25rem;
-  }
-
-  .artisan-reels-grid {
-    gap: 12px;
-  }
-
-  .artisan-reel {
-    min-height: 210px;
-    padding: 16px;
-    gap: 22px;
-  }
-
-  .artisan-reel-title {
-    font-size: 1.625rem;
-  }
-
-  .artisan-reel-footer {
-    align-items: flex-start;
-    font-size: 0.8125rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .artisan-reels-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .artisan-reel {
-    min-height: 190px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .artisan-signup-button,
-  .artisan-reel,
-  .artisan-email-button {
-    transition: none;
-  }
-}
-
-/* Stack the introduction above a standalone quote. */
-
-.artisan-venue {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 32px;
-}
-
-.artisan-venue-intro {
-  max-width: 650px;
-}
-
-/* Big, bubbly quote in its own white space. */
-
-.artisan-venue-quote {
-  width: 100%;
-  margin: 0;
-  padding: clamp(32px, 6vw, 72px) clamp(20px, 5vw, 64px);
-  background: #ffffff;
-  text-align: center;
-}
-
-.artisan-venue-quote blockquote {
-  max-width: 1000px;
-  margin-inline: auto;
-  color: #f12524;
-  font-family: 'Shrikhand', Georgia, serif;
-  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.22;
-  letter-spacing: -0.025em;
-}
-
-.artisan-venue-quote blockquote p {
-  margin: 0;
-}
-
-.artisan-venue-quote figcaption {
-  margin-top: 28px;
-  color: #0a0a0a;
-  font-family: 'DM Sans', Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.artisan-venue-quote figcaption span {
-  display: block;
-  font-weight: 400;
-}
-
-/* Location: clean link with a hidden address tooltip. */
-
-.artisan-shop .artisan-location {
-  position: relative;
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  margin-top: 20px;
-}
-
-.artisan-shop .artisan-location-link,
-.artisan-shop .artisan-location-link:visited {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  max-width: 100%;
-  padding: 8px 10px;
-  background: transparent;
-  color: #0a0a0a;
-  font-family: 'DM Sans', Arial, sans-serif;
-  font-size: 1.0625rem;
-  font-weight: 700;
-  line-height: 1.4;
-  text-decoration: none;
-}
-
-.artisan-shop .artisan-location-link:hover,
-.artisan-shop .artisan-location-link:focus-visible {
-  background: #0a0a0a;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.artisan-shop .artisan-location-tooltip {
-  position: absolute;
-  left: 0;
-  bottom: calc(100% + 8px);
-  z-index: 5;
-  display: block;
-  width: max-content;
-  max-width: min(300px, 100%);
-  padding: 10px 12px;
-  background: #0a0a0a;
-  color: #ffffff;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.45;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.artisan-shop .artisan-location:focus-within
-  .artisan-location-tooltip {
-  opacity: 1;
-  visibility: visible;
-}
-
-@media (hover: hover) {
-  .artisan-shop .artisan-location:hover
-    .artisan-location-tooltip {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-/* Give the quote a comfortable, separate white space. */
-
-.artisan-shop .artisan-venue {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 32px;
-}
-
-.artisan-shop .artisan-venue-quote {
-  width: 100%;
-  margin: 0;
-  padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 48px);
-  background: #ffffff;
-  text-align: center;
-}
-
-.artisan-shop .artisan-venue-quote blockquote {
-  max-width: 1000px;
-  margin: 0 auto;
-  color: #f12524;
-  font-family: 'Shrikhand', Georgia, serif;
-  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.22;
-  letter-spacing: -0.025em;
-}
-
-.artisan-shop .artisan-venue-quote figcaption {
-  margin-top: 28px;
-  color: #0a0a0a;
-}
-
-/* Questions becomes a centered, quiet editorial link. */
+/* Centered Questions button. */
 
 .artisan-shop .artisan-contact {
   display: flex;
@@ -638,8 +433,125 @@
   transform: none;
 }
 
+.artisan-signup-button:focus-visible,
+.artisan-reel:focus-visible {
+  outline: 3px solid var(--artisan-ink);
+  outline-offset: 5px;
+}
+
 .artisan-shop .artisan-email-button:focus-visible,
 .artisan-shop .artisan-location-link:focus-visible {
   outline: 2px solid #0a0a0a;
   outline-offset: 4px;
+}
+
+.artisan-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tablets and smaller laptops. */
+
+@media (max-width: 1000px) {
+  .artisan-reels-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .artisan-reel {
+    min-height: 210px;
+  }
+}
+
+@media (max-width: 900px) {
+  .artisan-shop {
+    scroll-margin-top: 280px;
+  }
+
+  .artisan-overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .artisan-mercantile-image {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .artisan-overview-copy {
+    max-width: 680px;
+  }
+
+  .artisan-venue-quote {
+    max-width: 760px;
+  }
+}
+
+/* Phones. */
+
+@media (max-width: 600px) {
+  .artisan-shop {
+    scroll-margin-top: 340px;
+  }
+
+  .artisan-shop-inner {
+    padding: 36px 20px 48px;
+  }
+
+  .artisan-shop-header h2 {
+    font-size: clamp(2.25rem, 9vw, 3.25rem);
+  }
+
+  .artisan-overview {
+    gap: 30px;
+  }
+
+  .artisan-shop .artisan-venue,
+  .artisan-highlights {
+    margin-top: 44px;
+    padding-top: 28px;
+  }
+
+  .artisan-reels-grid {
+    gap: 12px;
+  }
+
+  .artisan-reel {
+    min-height: 210px;
+    padding: 16px;
+    gap: 22px;
+  }
+
+  .artisan-reel-title {
+    font-size: 1.625rem;
+  }
+
+  .artisan-reel-footer {
+    align-items: flex-start;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .artisan-reels-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .artisan-reel {
+    min-height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artisan-signup-button,
+  .artisan-reel,
+  .artisan-email-button {
+    transition: none;
+  }
 }
