@@ -3,6 +3,7 @@ import EventsGrid from './EventsGrid'
 import HistoryFeature from './HistoryFeature'
 import Section from './Section'
 import logo from '../assets/logo.png'
+import ArtisanShop from './ArtisanShop'
 import mtHuffThankYou from '../assets/mt_huff_thank_you.png'
 
 export default function Newsletter() {
@@ -14,6 +15,7 @@ export default function Newsletter() {
         <EventsGrid />
 
         <HistoryFeature />
+        <ArtisanShop />
 
         <section
           className="mt-huff-thank-you"
@@ -27,15 +29,7 @@ export default function Newsletter() {
           />
         </section>
 
-        <div className="newsletter-content">
-          <Section id="artisan-shop" title="Artisan Shop">
-            <p>Artisan Shop information will go here.</p>
-          </Section>
-
-          <Section id="scholarship" title="Scholarship">
-            <p>Scholarship information will go here.</p>
-          </Section>
-        </div>
+       
       </main>
 
       <footer className="newsletter-footer">

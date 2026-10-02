@@ -410,3 +410,7 @@ a.membership-link:hover {
     padding: 76px 10px 16px;
   }
 }
+
+.mt-huff-thank-you {
+  margin-top: clamp(40px, 6vw, 80px);
+}

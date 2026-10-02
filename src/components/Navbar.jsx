@@ -1,12 +1,25 @@
 const articleLinks = [
-  { href: '#chamber-news', title: 'Chamber News', style: 'news' },
-{
-  href: '#chamber-meeting',
-  title: 'Chamber Board Meeting',
-  style: 'meeting',
-},
-  { href: '#artisan-shop', title: 'Artisan Shop', style: 'artisan' },
-  { href: '#scholarship', title: 'Scholarship', style: 'scholarship' },
+  {
+    href: '#chamber-news',
+    title: 'Chamber News',
+    style: 'news',
+  },
+  {
+    href: '#chamber-meeting',
+    title: 'Chamber Board Meeting',
+    style: 'meeting',
+  },
+  {
+    href: '#artisan-shop',
+    title: 'Artisan Shop',
+    style: 'artisan',
+  },
+  {
+    href: 'https://www.zeffy.com/en-US/donation-form/scholarship-donation-20',
+    title: 'Scholarship',
+    style: 'scholarship',
+    external: true,
+  },
 ]
 
 const membershipUrl =
@@ -21,6 +34,8 @@ export default function Navbar() {
             className={`article-nav-link article-nav-${link.style}`}
             href={link.href}
             key={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
           >
             <span>{link.title}</span>
 
@@ -28,6 +43,10 @@ export default function Navbar() {
               <span className="article-nav-subtitle">
                 {link.subtitle}
               </span>
+            )}
+
+            {link.external && (
+              <span className="sr-only"> (opens in a new tab)</span>
             )}
           </a>
         ))}
