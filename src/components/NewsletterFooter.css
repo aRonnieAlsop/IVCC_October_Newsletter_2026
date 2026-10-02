@@ -252,3 +252,14 @@
     transition: none;
   }
 }
+
+.newsletter-share-preview {
+  width: min(100%, 280px);
+  margin-inline: auto;
+}
+
+.newsletter-share-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -1,18 +1,16 @@
 import { useState } from 'react'
+import newsletterShareImage from '../assets/newsletter_share.png'
 import './NewsletterFooter.css'
 
-// Replace with the published WordPress newsletter URL when ready.
-const newsletterUrl = ''
-
-// Later, import your finished share image and replace '' with that import.
-const shareImage = ''
+const newsletterUrl =
+  'https://indianvalleychamber.org/october-2026-newsletter/'
 
 export default function NewsletterFooter() {
   const [message, setMessage] = useState('')
   const [manualLink, setManualLink] = useState('')
 
-  const shareUrl = newsletterUrl || window.location.href
-  const shareTitle = 'October Newsletter | Indian Valley Chamber of Commerce'
+  const shareTitle =
+    'October 2026 Newsletter | Indian Valley Chamber of Commerce'
 
   function backToTop(event) {
     event.preventDefault()
@@ -30,11 +28,11 @@ export default function NewsletterFooter() {
 
   async function copyLink() {
     try {
-      await navigator.clipboard.writeText(shareUrl)
+      await navigator.clipboard.writeText(newsletterUrl)
       setManualLink('')
       setMessage('Link copied!')
     } catch {
-      setManualLink(shareUrl)
+      setManualLink(newsletterUrl)
       setMessage('Select and copy the link below.')
     }
   }
@@ -43,20 +41,21 @@ export default function NewsletterFooter() {
     const data = {
       title: shareTitle,
       text: 'A little look at what’s happening in Indian Valley.',
-      url: shareUrl,
+      url: newsletterUrl,
     }
 
-    if (
-      navigator.share &&
-      (!navigator.canShare || navigator.canShare(data))
-    ) {
-      try {
+    try {
+      if (
+        navigator.share &&
+        (!navigator.canShare || navigator.canShare(data))
+      ) {
         await navigator.share(data)
         setMessage('')
+        setManualLink('')
         return
-      } catch (error) {
-        if (error.name === 'AbortError') return
       }
+    } catch (error) {
+      if (error.name === 'AbortError') return
     }
 
     await copyLink()
@@ -70,23 +69,12 @@ export default function NewsletterFooter() {
       >
         <div className="newsletter-share-inner">
           <div className="newsletter-share-preview">
-            {shareImage ? (
-              <img
-                src={shareImage}
-                alt="October newsletter share artwork"
-                loading="lazy"
-              />
-            ) : (
-              <div className="newsletter-share-placeholder">
-                <span>Indian Valley</span>
-                <strong>
-                  Good things
-                  <br />
-                  to pass along.
-                </strong>
-                <span>October 2026</span>
-              </div>
-            )}
+            <img
+              src={newsletterShareImage}
+              alt="October 2026 Indian Valley Chamber of Commerce Newsletter poster"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <div className="newsletter-share-copy">
@@ -99,7 +87,7 @@ export default function NewsletterFooter() {
 
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                  shareUrl
+                  newsletterUrl
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
