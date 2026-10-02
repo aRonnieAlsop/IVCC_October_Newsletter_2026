@@ -69,10 +69,12 @@
   line-height: 1.6;
 }
 
-/* Large opening photograph, shown without cropping. */
+/* Opening photograph: centered and capped on wider screens. */
 
-.history-hero {
+.history-feature .history-hero {
   width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
 }
 
 .history-hero img {

@@ -5,6 +5,11 @@ import './NewsletterFooter.css'
 const newsletterUrl =
   'https://indianvalleychamber.org/october-2026-newsletter/'
 
+const facebookShareUrl =
+  `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+    newsletterUrl
+  )}`
+
 export default function NewsletterFooter() {
   const [message, setMessage] = useState('')
   const [manualLink, setManualLink] = useState('')
@@ -55,10 +60,73 @@ export default function NewsletterFooter() {
         return
       }
     } catch (error) {
-      if (error.name === 'AbortError') return
+      if (error?.name === 'AbortError') return
     }
 
     await copyLink()
+  }
+
+  function shareOnFacebook(event) {
+    // Preserve normal behavior for modified clicks.
+    if (
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return
+    }
+
+    const width = 640
+    const height = 720
+
+    const left = Math.max(
+      0,
+      window.screenX + (window.outerWidth - width) / 2
+    )
+
+    const top = Math.max(
+      0,
+      window.screenY + (window.outerHeight - height) / 2
+    )
+
+    let shareWindow = null
+
+    try {
+      // Open directly during the click so popup blockers
+      // can recognize this as a user-requested action.
+      shareWindow = window.open(
+        facebookShareUrl,
+        '_blank',
+        [
+          'popup=yes',
+          `width=${width}`,
+          `height=${height}`,
+          `left=${Math.round(left)}`,
+          `top=${Math.round(top)}`,
+          'resizable=yes',
+          'scrollbars=yes',
+        ].join(',')
+      )
+    } catch {
+      // The ordinary link remains available as a fallback.
+    }
+
+    if (shareWindow) {
+      event.preventDefault()
+
+      try {
+        shareWindow.opener = null
+        shareWindow.focus()
+      } catch {
+        // Facebook may already have navigated the window.
+      }
+    }
+
+    setManualLink('')
+    setMessage(
+      'If Facebook opens without the article, use Share and choose Facebook.'
+    )
   }
 
   return (
@@ -86,12 +154,11 @@ export default function NewsletterFooter() {
               </button>
 
               <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                  newsletterUrl
-                )}`}
+                href={facebookShareUrl}
+                onClick={shareOnFacebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Share on Facebook (opens in a new tab)"
+                aria-label="Share on Facebook (opens in a new window)"
               >
                 Facebook
               </a>
