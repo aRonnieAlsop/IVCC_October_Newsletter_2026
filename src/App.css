@@ -215,7 +215,7 @@ a.membership-link:hover {
   position: fixed;
   left: max(12px, env(safe-area-inset-left));
   bottom: max(12px, env(safe-area-inset-bottom));
-  width: clamp(44px, 7vw, 96px);
+  width: clamp(64px, 9vw, 96px);
   height: auto;
   max-height: 96px;
   object-fit: contain;
